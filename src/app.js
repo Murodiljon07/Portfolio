@@ -15,8 +15,10 @@ app.get("/", (req, res) => {
 // Routes
 import adminRouter from "./modules/admin/admin.route.js";
 import authRouter from "./modules/auth/auth.route.js";
+import skillsRouter from "./modules/skills/skills.route.js";
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/skills", skillsRouter);
 
 export default app;

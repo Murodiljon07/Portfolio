@@ -1,10 +1,15 @@
 import e from "express";
 
-import { getMeController, updateMeController } from "./admin.controller.js";
+import {
+  getAdminController,
+  updateAdminController,
+} from "./admin.controller.js";
+
+import authMiddleware from "../../middlewares/auth.middleware.js";
 
 const router = e.Router();
 
-router.get("/me", getMeController);
-router.post("/me", updateMeController);
+router.get("/me", getAdminController);
+router.post("/me", authMiddleware, updateAdminController);
 
 export default router;
