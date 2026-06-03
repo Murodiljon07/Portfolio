@@ -9,16 +9,18 @@ const adminSchema = new mongoose.Schema({
   profession: { type: String, required: true },
   experience: { type: String, required: true },
   avatar: { type: String, required: true },
-  media: {
-    type: [
-      {
+  media: [
+    {
+      name: {
         type: String,
-        url: { type: String, required: true },
-        required: true,
+        require: true,
       },
-    ],
-    required: true,
-  },
+      url: {
+        type: String,
+        require: true,
+      },
+    },
+  ],
   cv: { type: String, required: true },
   adress: { type: String, required: true },
   currentCity: { type: String, required: true, default: "Fergana" },
@@ -27,7 +29,7 @@ const adminSchema = new mongoose.Schema({
   skills: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Skills",
+      ref: "skills",
       required: true,
     },
   ],
@@ -37,7 +39,7 @@ const adminSchema = new mongoose.Schema({
   projects: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Projects",
+      ref: "projects",
       required: true,
     },
   ],

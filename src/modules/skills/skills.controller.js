@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Admin from "../../models/admin.model.js";
 import Skill from "../../models/skills.model.js";
 
 export const getSkillsController = async (req, res) => {
@@ -23,6 +24,11 @@ export const addSkillController = async (req, res) => {
   try {
     const skill = await Skill.create(body);
 
+    const admin = await Admin.findOne();
+
+    admin.skills.push(skill._id);
+    await admin.save();
+
     res.status(200).json({
       success: true,
       data: skill,
@@ -40,7 +46,7 @@ export const updateSkillController = async (req, res) => {
   let skillId = req.params.id;
 
   try {
-    const skill = await Skill.findById(skillId);
+    const skill = await Skill.findByIdAndUpdate(skillId);
 
     if (!skill) {
       return res.status(404).json({
@@ -48,9 +54,6 @@ export const updateSkillController = async (req, res) => {
         message: "Skill not found",
       });
     }
-
-    skill.set(body);
-    await skill.save();
 
     res.status(200).json({
       success: true,
@@ -68,7 +71,9 @@ export const deleteSkillController = async (req, res) => {
   let skillId = req.params.id;
 
   try {
-    const skill = await Skill.findById(skillId);
+    const skill = await Skill.findByIdAndDelete(skillId);
+
+    console.log(skillId);
 
     if (!skill) {
       return res.status(404).json({
@@ -87,6 +92,7 @@ export const deleteSkillController = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to delete skill",
+      error,
     });
   }
 };
