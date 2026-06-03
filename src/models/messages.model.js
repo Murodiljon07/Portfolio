@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const messageModel = mongoose.Schema({
-  author: { type: String, require: true },
-  message: { type: String, require: true },
+const messageModel = new mongoose.Schema({
+  author: { type: String, required: true },
+  message: { type: String, required: true },
 });
 
 const Message = mongoose.model("message", messageModel);
