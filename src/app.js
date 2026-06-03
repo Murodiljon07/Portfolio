@@ -1,21 +1,22 @@
 import dotenv from "dotenv";
 dotenv.config();
-
 import e from "express";
 import connectDB from "./config/db.config.js";
+connectDB();
+
 const app = e();
 
 app.use(e.json());
-
-connectDB();
-
-// Routes
-import aboutRouter from "./modules/about/about.route.js";
 
 app.get("/", (req, res) => {
   res.send("Welcome to the My Portfolio baskend");
 });
 
-app.use("/api/v1", aboutRouter);
+// Routes
+import adminRouter from "./modules/admin/admin.route.js";
+import authRouter from "./modules/auth/auth.route.js";
+
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/admin", adminRouter);
 
 export default app;

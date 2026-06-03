@@ -1,7 +1,6 @@
 import e from "express";
-import fs from "fs";
 
-import { getMeController, updateMeController } from "./about.controller.js";
+import { getMeController, updateMeController } from "./admin.controller.js";
 
 const router = e.Router();
 
