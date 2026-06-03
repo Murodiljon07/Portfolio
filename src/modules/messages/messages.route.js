@@ -12,6 +12,6 @@ import {
 
 route.get("/", authMiddleware, getAllMessagesController);
 route.post("/send", postMessageController);
-route.delete("/delete/:id", deleteMessageController);
+route.delete("/delete/:id", authMiddleware, deleteMessageController);
 
 export default route;
