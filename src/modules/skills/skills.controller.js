@@ -73,7 +73,7 @@ export const deleteSkillController = async (req, res) => {
   try {
     const skill = await Skill.findByIdAndDelete(skillId);
 
-    console.log(skillId);
+  
 
     if (!skill) {
       return res.status(404).json({
