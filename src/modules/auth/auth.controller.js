@@ -9,8 +9,6 @@ export const loginController = async (req, res) => {
   try {
     const admin = await loginService(email, password, secondPassword);
 
-    console.log(admin);
-
     if (!admin) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
