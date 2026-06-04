@@ -13,6 +13,7 @@ const adminSchema = new mongoose.Schema(
 
     media: [
       {
+        title: { type: String, required: true },
         platform: { type: String, required: true },
         url: { type: String, required: true },
       },
