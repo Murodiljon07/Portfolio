@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const messageModel = new mongoose.Schema({
   author: { type: String, required: true },
+  email: { type: String, required: true },
   message: { type: String, required: true },
 });
 

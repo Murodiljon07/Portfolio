@@ -1,21 +1,5 @@
 import mongoose from "mongoose";
 
-const mediaSchema = new mongoose.Schema(
-  {
-    platform: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    url: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-  },
-  { _id: false },
-);
-
 const adminSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
@@ -32,6 +16,7 @@ const adminSchema = new mongoose.Schema(
         platform: { type: String, required: true },
         url: { type: String, required: true },
       },
+      { _id: false },
     ],
 
     cv: {
