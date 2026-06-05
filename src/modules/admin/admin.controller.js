@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 import Admin from "../../models/admin.model.js";
+import { updateAge } from "../../utils/autoUpdate.service.js";
 
 export const getAdminController = async (req, res) => {
   try {
     const admin = await Admin.findOne();
+
+    updateAge(admin.birthday, admin.age);
 
     res.status(200).json({
       success: true,
