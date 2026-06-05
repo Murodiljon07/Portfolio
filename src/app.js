@@ -7,7 +7,12 @@ connectDB();
 
 const app = e();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://murodiljon-07.vercel.app",
+    credentials: true,
+  })
+);
 
 app.use(e.json());
 
